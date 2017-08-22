@@ -23,6 +23,28 @@ You can run `npm run test` to run all the tests in `test/`.
 
 See all of the commands you can run in the `scripts` section of `package.json`.
 
+## Containerized static version of Apparatus
+
+### Build
+
+``` bash
+docker build --tag dobbs/apparatus .
+```
+
+### Run
+
+``` bash
+docker run \
+  -d \
+  --name apparatus \
+  -v $HOME/apparatus-saves:/src/saves \
+  -p 2015:2015 dobbs/apparatus
+```
+
+Then point your browser at http://localhost:2015 to load the local
+editor.  If you save your work in `$HOME/apparatus-saves` you will
+be able to re-load it from http://localhost:2015/?load=saves/filename.json
+
 ## Compiling the icon font
 
 If you add an icon to the icon font (by putting an svg into the `icons` folder), you'll need to rebuild the icon font (the stuff in `dist/font` including `dist/font/icons.css`).
